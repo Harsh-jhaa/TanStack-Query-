@@ -22,4 +22,9 @@ const fetchIndividualPost = async (id) => {
   }
 };
 
-export { fetchPosts, api, fetchIndividualPost };
+const deletePost = async (id) => {
+  const res = await api.delete(`/posts/${id}`);
+  return res;
+};
+
+export { fetchPosts, api, fetchIndividualPost, deletePost };
