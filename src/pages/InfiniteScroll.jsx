@@ -63,11 +63,13 @@ const InfiniteScroll = () => {
         </ul>
       ))}
       <div ref={ref} style={{ padding: '20px', textAlign: 'center' }}>
-        {isFetchingNextPage
-          ? 'Loading More...'
-          : hasNextPage
-          ? 'Scroll down to load more'
-          : 'Nothing more to load'}
+        {isFetchingNextPage ? (
+          <h1>Loading More...</h1>
+        ) : hasNextPage ? (
+          <h1>Scroll down to load more</h1>
+        ) : (
+          <h1>Nothing more to load</h1>
+        )}
       </div>
     </div>
   );

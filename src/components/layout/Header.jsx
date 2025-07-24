@@ -5,10 +5,12 @@ const Header = () => {
   return (
     <header>
       <div>
-        <NavLink to='/'>TanStack Query </NavLink>
+        <NavLink className='tanstacklink' to='https://tanstack.com/'>
+          TanStack Query{' '}
+        </NavLink>
         <ul>
           <li>
-            <NavLink to={'/'}>Home</NavLink>
+            <NavLink to={'/home'}>Home</NavLink>
           </li>
           <li>
             <NavLink to={'/trad'}>FetchOld</NavLink>

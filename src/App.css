@@ -89,7 +89,6 @@ footer {
   display: flex;
   justify-content: center;
   align-content: center;
- 
 }
 /* ================================================ */
 
@@ -163,4 +162,11 @@ footer {
   margin: auto;
   display: flex;
   gap: 3.2rem;
+}
+.tanstacklink:hover {
+  color: #e74c3c;
+}
+.link-block {
+  display: block;
+  margin-bottom: 1.2rem;
 }
