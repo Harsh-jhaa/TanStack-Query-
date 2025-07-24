@@ -26,5 +26,26 @@ const deletePost = async (id) => {
   const res = await api.delete(`/posts/${id}`);
   return res;
 };
+const updatePost = async (id) => {
+  const res = await api.patch(`/posts/${id}`, { title: 'Updated title' });
+  return res;
+};
+const fetchUsers = async ({ pageParam = 1 }) => {
+  try {
+    const res = await axios.get(
+      `https://api.github.com/users?per_page=10&page=${pageParam}`
+    );
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-export { fetchPosts, api, fetchIndividualPost, deletePost };
+export {
+  fetchPosts,
+  api,
+  fetchIndividualPost,
+  deletePost,
+  updatePost,
+  fetchUsers,
+};

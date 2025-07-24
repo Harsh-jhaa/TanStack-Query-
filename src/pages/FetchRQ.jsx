@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { deletePost, fetchPosts } from '../API/api';
+import { deletePost, fetchPosts, updatePost } from '../API/api';
 import {
   keepPreviousData,
   useMutation,
@@ -32,6 +32,22 @@ const FetchRQ = () => {
     },
   });
 
+  const updateMutation = useMutation({
+    mutationFn: (id) => updatePost(id),
+    onSuccess: (resData, id) => {
+      // console.log(resData, id);
+      queryClient.setQueryData(['posts', pageNumber], (curElem) => {
+        // curElem is the data in the cache , which is returned by the setQueryData after the update
+        return curElem?.map((post) => {
+          if (post.id === id) {
+            return { ...post, title: 'Updated title' };
+          }
+          return post;
+        });
+      });
+    },
+  });
+
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Something went wrong, try again</p>;
 
@@ -47,6 +63,7 @@ const FetchRQ = () => {
                 <p>{body}</p>
               </NavLink>
               <button onClick={() => deleteMutation.mutate(id)}>Delete</button>
+              <button onClick={() => updateMutation.mutate(id)}>Update</button>
             </li>
           );
         })}
